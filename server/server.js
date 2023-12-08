@@ -1,10 +1,18 @@
 const express = require('express');
 const app = express();
 const dotenv = require('dotenv');
+const mongoCon = require('./mongoConnect/mongoCon.js');
 
 dotenv.config();
 
+mongoCon();
 
+app.get('/health', (req, res)=>{
+    res.json({
+        status: 'active',
+        message: "server is running"
+    })
+})
 
 
 
